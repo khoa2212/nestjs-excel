@@ -1,0 +1,43 @@
+@baseUrl = http://localhost:5000
+
+
+###
+# @name getAllExcel
+GET {{baseUrl}}/excel
+Content-Type: application/json
+
+###
+# @name addExcel
+POST {{baseUrl}}/excel
+Content-Type: application/json
+
+{
+    "link":"asdasdasd"
+}
+
+###
+# @name deleteUser
+DELETE  {{baseUrl}}/users
+Content-Type: application/json
+
+{
+    "id":6,
+    "username":"New User",
+    "password":"123",
+    "role":"Customer",
+    "isBlocked":false
+}
+
+###
+# @name blockUser
+PUT  {{baseUrl}}/users
+Content-Type: application/json
+
+{
+    "id":6,
+    "username":"New User",
+    "password":"123",
+    "role":"Customer",
+    "isBlocked":true
+}
+

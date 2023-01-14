@@ -1,11 +1,11 @@
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { ExcelModule } from './excel/excel.module';
+import { ExcelModule } from './modules/excel/excel.module';
 import { DatabaseModule } from './database/database.module';
 
 @Module({
-  imports: [ExcelModule, DatabaseModule],
+  imports: [ExcelModule],
   controllers: [AppController],
   providers: [AppService],
 })

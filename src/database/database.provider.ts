@@ -1,5 +1,5 @@
 import { Sequelize } from 'sequelize-typescript';
-//import { Cat } from '../cats/cat.entity';
+import { Excel } from 'src/modules/excel/entities/excel.entity';
 
 export const databaseProviders = [
   {
@@ -11,9 +11,9 @@ export const databaseProviders = [
         port: 3306,
         username: 'root',
         password: 'andy9999',
-        database: 'excel-database',
+        database: 'Exceldatabase',
       });
-      //sequelize.addModels([cat]);
+      sequelize.addModels([Excel]);
       await sequelize.sync();
       return sequelize;
     },

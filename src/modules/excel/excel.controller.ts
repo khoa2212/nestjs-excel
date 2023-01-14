@@ -1,20 +1,41 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import { Controller, 
+  Get, 
+  Post,
+  Body, 
+  Patch, 
+  Param, 
+  Delete, 
+  Res, 
+  HttpStatus, 
+  Req, 
+  UsePipes, 
+  ValidationPipe } from '@nestjs/common';
 import { ExcelService } from './excel.service';
 import { CreateExcelDto } from './dto/create-excel.dto';
 import { UpdateExcelDto } from './dto/update-excel.dto';
+import { Response } from 'express';
 
 @Controller('excel')
 export class ExcelController {
   constructor(private readonly excelService: ExcelService) {}
 
   @Post()
-  create(@Body() createExcelDto: CreateExcelDto) {
-    return this.excelService.create(createExcelDto);
+  create(@Body() createExcelDto: CreateExcelDto, @Res() res: Response) {
+    console.log("-------------abc------------------");
+    //console.log(createExcelDto.link);
+    const result = this.excelService.create(createExcelDto);
+    //return res.status(200).json(createExcelDto.link);
   }
 
   @Get()
-  findAll() {
-    return this.excelService.findAll();
+  async findAll(@Res() res: Response) {
+    try {
+      const result = await this.excelService.findAll();
+      return res.status(200).json(result); 
+    } catch (error) {
+      console.log(error);
+      return res.status(500).json({ message: 'Internal Server Error' })
+    }
   }
 
   @Get(':id')
