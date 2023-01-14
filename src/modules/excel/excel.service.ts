@@ -1,4 +1,5 @@
 import { Injectable, Inject, HttpException, HttpStatus } from '@nestjs/common';
+import { raw } from 'mysql2';
 import { CreateExcelDto } from './dto/create-excel.dto';
 import { UpdateExcelDto } from './dto/update-excel.dto';
 import { Excel } from './entities/excel.entity';
@@ -11,9 +12,16 @@ export class ExcelService {
     private readonly excelsRepository: typeof Excel,
   ) { }
 
-  create(createExcelDto: CreateExcelDto) {
-    const excel = new Excel();
-    return 'This action adds a new excel';
+  async create(createExcelDto: CreateExcelDto) {
+    const excel = await this.excelsRepository.create<Excel> (
+      {
+        link: createExcelDto.link
+      },
+      {
+        raw: true
+      }
+    );
+    return excel;
   }
 
   async findAll() {

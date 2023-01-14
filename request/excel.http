@@ -12,12 +12,12 @@ POST {{baseUrl}}/excel
 Content-Type: application/json
 
 {
-    "link":"asdasdasd"
+    "link":"test 91011 asdasdasd"
 }
 
 ###
 # @name deleteUser
-DELETE  {{baseUrl}}/users
+DELETE  {{baseUrl}}/excel
 Content-Type: application/json
 
 {
@@ -30,7 +30,7 @@ Content-Type: application/json
 
 ###
 # @name blockUser
-PUT  {{baseUrl}}/users
+PUT  {{baseUrl}}/excel
 Content-Type: application/json
 
 {

@@ -20,11 +20,17 @@ export class ExcelController {
   constructor(private readonly excelService: ExcelService) {}
 
   @Post()
-  create(@Body() createExcelDto: CreateExcelDto, @Res() res: Response) {
-    console.log("-------------abc------------------");
-    //console.log(createExcelDto.link);
-    const result = this.excelService.create(createExcelDto);
-    //return res.status(200).json(createExcelDto.link);
+  async create(@Body() createExcelDto: CreateExcelDto, @Res() res: Response) {
+    try {
+      const result = await this.excelService.create(createExcelDto);
+      console.log(result);
+      if(result)
+        return res.status(200).json(result);
+      return res.status(400).json("Bad request");
+    } catch (error) {
+      console.log(error);
+      return res.status(500).json({ message: 'Internal Server Error' })
+    }
   }
 
   @Get()
