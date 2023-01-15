@@ -24,8 +24,9 @@ export class ExcelController {
     try {
       const result = await this.excelService.create(createExcelDto);
       console.log(result);
-      if(result)
+      if(result){
         return res.status(200).json(result);
+      }
       return res.status(400).json("Bad request");
     } catch (error) {
       console.log(error);

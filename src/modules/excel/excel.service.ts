@@ -3,6 +3,7 @@ import { raw } from 'mysql2';
 import { CreateExcelDto } from './dto/create-excel.dto';
 import { UpdateExcelDto } from './dto/update-excel.dto';
 import { Excel } from './entities/excel.entity';
+import { CloudinaryService } from 'src/cloundinary/cloudinary.service';
 
 @Injectable()
 export class ExcelService {
@@ -10,12 +11,15 @@ export class ExcelService {
   constructor(
     @Inject('ExcelsRepository')
     private readonly excelsRepository: typeof Excel,
+    private readonly cloudinary: CloudinaryService
   ) { }
 
   async create(createExcelDto: CreateExcelDto) {
+    const resUpload = await this.cloudinary.uploadFile(createExcelDto.link.toString());
+    console.log(resUpload)
     const excel = await this.excelsRepository.create<Excel> (
       {
-        link: createExcelDto.link
+        link: resUpload
       },
       {
         raw: true
