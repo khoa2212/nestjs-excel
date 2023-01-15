@@ -7,12 +7,17 @@ GET {{baseUrl}}/excel
 Content-Type: application/json
 
 ###
+# @name getExcelById
+GET {{baseUrl}}/excel/1
+Content-Type: application/json
+
+###
 # @name addExcel
 POST {{baseUrl}}/excel
 Content-Type: application/json
 
 {
-    "link":"test 91011 asdasdasd"
+    "link":"test 1323231 asdasdasd"
 }
 
 ###

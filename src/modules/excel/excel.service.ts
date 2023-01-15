@@ -31,8 +31,12 @@ export class ExcelService {
     return excel;
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} excel`;
+  async findOne(id: number) {
+    const excel = await this.excelsRepository.findOne<Excel>({
+      where: { id },
+      raw: true
+    })
+    return excel
   }
 
   update(id: number, updateExcelDto: UpdateExcelDto) {

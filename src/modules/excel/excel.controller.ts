@@ -45,8 +45,14 @@ export class ExcelController {
   }
 
   @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.excelService.findOne(+id);
+  async findOne(@Param('id') id: string, @Res() res: Response) {
+    try {
+      const result = await this.excelService.findOne(+id);
+      return res.status(200).json(result); 
+    } catch (error) {
+      console.log(error);
+      return res.status(500).json({ message: 'Internal Server Error' })
+    }
   }
 
   @Patch(':id')
