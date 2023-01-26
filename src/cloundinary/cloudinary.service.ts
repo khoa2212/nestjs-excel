@@ -20,7 +20,7 @@ export class CloudinaryService {
     async uploadFile(url: string){
         try {
             return await v2.uploader
-                .upload(url, { allowed_formats: ['xlsx', 'csv', 'png', 'jpg'] })
+                .upload(url, { resource_type: "auto" })
                 .then((result) => result.url)
         } catch (error) {
             console.log("Upload: ", error)
