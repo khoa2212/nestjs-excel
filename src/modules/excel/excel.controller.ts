@@ -15,11 +15,11 @@ import { CreateExcelDto } from './dto/create-excel.dto';
 import { UpdateExcelDto } from './dto/update-excel.dto';
 import { Response } from 'express';
 
-@Controller('excel')
+@Controller('api/excel')
 export class ExcelController {
   constructor(private readonly excelService: ExcelService) {}
 
-  @Post()
+  @Post('uploadFile')
   async create(@Body() createExcelDto: CreateExcelDto, @Res() res: Response) {
     try {
       const result = await this.excelService.create(createExcelDto);
@@ -34,7 +34,7 @@ export class ExcelController {
     }
   }
 
-  @Get()
+  @Get('files')
   async findAll(@Res() res: Response) {
     try {
       const result = await this.excelService.findAll();

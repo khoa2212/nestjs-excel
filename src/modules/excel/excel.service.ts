@@ -15,8 +15,7 @@ export class ExcelService {
   ) { }
 
   async create(createExcelDto: CreateExcelDto) {
-    const resUpload = await this.cloudinary.uploadFile(createExcelDto.link.toString());
-    console.log(resUpload)
+    const resUpload = await this.cloudinary.uploadFile(createExcelDto.data.toString());
     const excel = await this.excelsRepository.create<Excel> (
       {
         link: resUpload

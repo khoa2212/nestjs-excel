@@ -3,7 +3,7 @@
 
 ###
 # @name getAllExcel
-GET {{baseUrl}}/excel
+GET {{baseUrl}}/api/excel/files
 Content-Type: application/json
 
 ###
@@ -13,11 +13,11 @@ Content-Type: application/json
 
 ###
 # @name addExcel
-POST {{baseUrl}}/excel
+POST {{baseUrl}}/api/excel/upload
 Content-Type: application/json
 
 {
-    "link":"https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg"
+    "data":"https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg"
 }
 
 ###
@@ -25,24 +25,8 @@ Content-Type: application/json
 DELETE  {{baseUrl}}/excel
 Content-Type: application/json
 
-{
-    "id":6,
-    "username":"New User",
-    "password":"123",
-    "role":"Customer",
-    "isBlocked":false
-}
-
 ###
 # @name blockUser
 PUT  {{baseUrl}}/excel
 Content-Type: application/json
-
-{
-    "id":6,
-    "username":"New User",
-    "password":"123",
-    "role":"Customer",
-    "isBlocked":true
-}
 
